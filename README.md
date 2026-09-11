@@ -66,7 +66,8 @@ simulation-renderer/
         ├── life/life.go            — Conway's Game of Life with a wrapping board
         ├── gravity/gravity.go      — O(n²) N-body gravity simulation
         ├── collision/collision.go  — O(n²) elastic collision simulation with bounded arena
-        └── boids/boids.go          — interactive flocking simulation
+        ├── boids/boids.go          — interactive flocking simulation
+        └── slime/slime.go          — colourful agent-based slime mould
 ```
 
 > 🔒 **Raylib isolation:** Only `internal/renderer/renderer.go` imports raylib. Simulations, the scene runner, and inputs use pure Go types.
@@ -100,6 +101,12 @@ simulation-renderer/
 - 🔁 A wrapping world keeps the flock flowing continuously across arena edges
 - 🧲 Left-click places a temporary attractor to guide the flock
 
+### 🧫 5. Chromatic Slime Mould (`-sim slime`)
+
+- 900 sensing agents follow and reinforce an evaporating pigment field
+- Electric cyan, ultraviolet, neon magenta, and amber trails are tuned for the black canvas
+- Left-click places a temporary amber nutrient and pulls nearby colonies into branching paths
+
 ---
 
 ## 🎛️ Controls
@@ -129,6 +136,9 @@ go run ./src -sim collision
 
 # 🐦 Run the interactive boids flock
 go run ./src -sim boids
+
+# 🧫 Run the colourful slime mould
+go run ./src -sim slime
 ```
 
 ---

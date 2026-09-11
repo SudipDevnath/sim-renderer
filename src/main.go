@@ -11,14 +11,16 @@ import (
 	"simulation-renderer/internal/shared"
 	"simulation-renderer/internal/simulations/boids"
 	"simulation-renderer/internal/simulations/collision"
+	"simulation-renderer/internal/simulations/compound"
 	"simulation-renderer/internal/simulations/gravity"
 	"simulation-renderer/internal/simulations/life"
+	"simulation-renderer/internal/simulations/slime"
 	"sync/atomic"
 )
 
 func main() {
 	// ── CLI ───────────────────────────────────────────────────────────────────
-	simFlag := flag.String("sim", "life", "simulation to run: life | gravity | collision | boids")
+	simFlag := flag.String("sim", "life", "simulation to run: life | gravity | collision | boids | slime")
 	flag.Parse()
 
 	// ── Pick simulation backend ───────────────────────────────────────────────
@@ -27,10 +29,12 @@ func main() {
 		"gravity":   func() shared.Simulation { return gravity.New() },
 		"collision": func() shared.Simulation { return collision.New() },
 		"boids":     func() shared.Simulation { return boids.New() },
+		"slime":     func() shared.Simulation { return slime.New() },
+		"comp":      func() shared.Simulation { return compound.New() },
 	}
 	newSimulation, ok := simulations[*simFlag]
 	if !ok {
-		fmt.Fprintf(os.Stderr, "unknown simulation %q; choose life, gravity, collision, or boids\n", *simFlag)
+		fmt.Fprintf(os.Stderr, "unknown simulation %q; choose life, gravity, collision, boids, or slime\n", *simFlag)
 		os.Exit(2)
 	}
 	sim := newSimulation()
