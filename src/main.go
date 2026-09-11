@@ -29,8 +29,8 @@ func main() {
 		"gravity":   func() shared.Simulation { return gravity.New() },
 		"collision": func() shared.Simulation { return collision.New() },
 		"boids":     func() shared.Simulation { return boids.New() },
-		"slime":     func() shared.Simulation { return slime.New() },
-		"comp":      func() shared.Simulation { return compound.New() },
+		"slime":     func() shared.Simulation { return slime.New() },    // [TODO: not working right now]
+		"comp":      func() shared.Simulation { return compound.New() }, // [TODO: not working right now]
 	}
 	newSimulation, ok := simulations[*simFlag]
 	if !ok {

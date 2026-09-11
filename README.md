@@ -101,7 +101,7 @@ simulation-renderer/
 - 🔁 A wrapping world keeps the flock flowing continuously across arena edges
 - 🧲 Left-click places a temporary attractor to guide the flock
 
-### 🧫 5. Chromatic Slime Mould (`-sim slime`)
+### 🧫 5. Chromatic Slime Mould (`-sim slime`) ❗NOT WORKING
 
 - 900 sensing agents follow and reinforce an evaporating pigment field
 - Electric cyan, ultraviolet, neon magenta, and amber trails are tuned for the black canvas
